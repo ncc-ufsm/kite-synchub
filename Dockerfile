@@ -16,8 +16,7 @@ VOLUME /etc/ssh/keys
 RUN apk add --no-cache \
     tini \
     openssh \
-    rsync \
-    acl
+    rsync
 
 COPY --chmod=770 entrypoint.sh /entrypoint.sh
 
