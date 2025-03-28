@@ -10,7 +10,7 @@ ENV PULL_USER_GID=1001
 
 EXPOSE 22
 
-VOLUME /data
+VOLUME /share
 VOLUME /etc/ssh/keys
 
 RUN apk add --no-cache \
