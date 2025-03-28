@@ -17,8 +17,11 @@ prepare_user() {
 prepare_user "$PUSH_USER_NAME" "$PUSH_USER_UID" "$PUSH_USER_GID" "$PUSH_USER_AUTHORIZED_KEYS"
 prepare_user "$PULL_USER_NAME" "$PULL_USER_UID" "$PULL_USER_GID" "$PULL_USER_AUTHORIZED_KEYS"
 
-chown "$PUSH_USER_NAME:$PUSH_USER_NAME" /share
+chown -R "$PUSH_USER_NAME:$PUSH_USER_GID" /share
 chmod 755 /share
+
+setfacl -Rm u:"$PULL_USER_NAME":rX /share
+setfacl -Rdm u:"$PULL_USER_NAME":rX /share
 
 mkdir -p /etc/ssh/keys
 
